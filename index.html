@@ -1,26 +1,208 @@
+
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>quick-ship-survey</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Опросник качества доставки</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-gray-800 mb-2">Опросник качества доставки</h1>
+            <p class="text-lg text-gray-600">Помогите нам улучшить наш сервис доставки</p>
+        </div>
 
-    <meta property="og:title" content="quick-ship-survey" />
-    <meta property="og:description" content="Lovable Generated Project" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+        <!-- Main Form -->
+        <div class="max-w-2xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+            <div class="bg-gradient-to-r from-blue-600 to-indigo-600 p-6">
+                <h2 class="text-2xl font-semibold text-white">Ваше мнение важно для нас</h2>
+                <p class="text-blue-100 mt-2">Заполните форму ниже, чтобы оценить качество доставки</p>
+            </div>
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  </head>
+            <form id="deliveryForm" class="p-6 space-y-6">
+                <!-- Personal Info Section -->
+                <div class="border-b border-gray-200 pb-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Личная информация</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="firstName" class="block text-sm font-medium text-gray-700 mb-2">Имя *</label>
+                            <input type="text" id="firstName" name="firstName" required 
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        
+                        <div>
+                            <label for="lastName" class="block text-sm font-medium text-gray-700 mb-2">Фамилия *</label>
+                            <input type="text" id="lastName" name="lastName" required 
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                    </div>
 
-  <body>
-    <div id="root"></div>
-    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+                    <div class="mt-4">
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+                        <input type="email" id="email" name="email" required 
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    </div>
+
+                    <div class="mt-4">
+                        <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Телефон</label>
+                        <input type="tel" id="phone" name="phone" 
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    </div>
+                </div>
+
+                <!-- Delivery Assessment Section -->
+                <div class="border-b border-gray-200 pb-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Оценка доставки</h3>
+                    
+                    <!-- Overall Rating -->
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-3">Общая оценка качества доставки *</label>
+                        <div class="flex space-x-2" id="overallRating">
+                            <button type="button" class="star-btn text-3xl text-gray-300 hover:text-yellow-400 transition-colors duration-200" data-rating="1">★</button>
+                            <button type="button" class="star-btn text-3xl text-gray-300 hover:text-yellow-400 transition-colors duration-200" data-rating="2">★</button>
+                            <button type="button" class="star-btn text-3xl text-gray-300 hover:text-yellow-400 transition-colors duration-200" data-rating="3">★</button>
+                            <button type="button" class="star-btn text-3xl text-gray-300 hover:text-yellow-400 transition-colors duration-200" data-rating="4">★</button>
+                            <button type="button" class="star-btn text-3xl text-gray-300 hover:text-yellow-400 transition-colors duration-200" data-rating="5">★</button>
+                        </div>
+                        <input type="hidden" id="overallRatingValue" name="overallRating" required>
+                        <p class="text-sm text-gray-500 mt-1">Нажмите на звездочки для оценки (1 - очень плохо, 5 - отлично)</p>
+                    </div>
+
+                    <!-- Delivery Speed -->
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-3">Скорость доставки *</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="radio" name="deliverySpeed" value="very-fast" class="text-blue-600 focus:ring-blue-500">
+                                <span class="ml-2 text-gray-700">Очень быстро (раньше срока)</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="deliverySpeed" value="on-time" class="text-blue-600 focus:ring-blue-500">
+                                <span class="ml-2 text-gray-700">Вовремя</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="deliverySpeed" value="slightly-late" class="text-blue-600 focus:ring-blue-500">
+                                <span class="ml-2 text-gray-700">Немного с опозданием</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="deliverySpeed" value="very-late" class="text-blue-600 focus:ring-blue-500">
+                                <span class="ml-2 text-gray-700">Очень поздно</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Package Condition -->
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-3">Состояние посылки *</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="radio" name="packageCondition" value="perfect" class="text-blue-600 focus:ring-blue-500">
+                                <span class="ml-2 text-gray-700">Идеальное состояние</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="packageCondition" value="good" class="text-blue-600 focus:ring-blue-500">
+                                <span class="ml-2 text-gray-700">Хорошее состояние</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="packageCondition" value="damaged" class="text-blue-600 focus:ring-blue-500">
+                                <span class="ml-2 text-gray-700">Повреждена упаковка</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="packageCondition" value="severely-damaged" class="text-blue-600 focus:ring-blue-500">
+                                <span class="ml-2 text-gray-700">Сильно повреждена</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Courier Service -->
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-3">Оценка работы курьера</label>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="courierQualities[]" value="polite" class="text-blue-600 focus:ring-blue-500">
+                                    <span class="ml-2 text-gray-700">Вежливый</span>
+                                </label>
+                            </div>
+                            <div>
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="courierQualities[]" value="professional" class="text-blue-600 focus:ring-blue-500">
+                                    <span class="ml-2 text-gray-700">Профессиональный</span>
+                                </label>
+                            </div>
+                            <div>
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="courierQualities[]" value="punctual" class="text-blue-600 focus:ring-blue-500">
+                                    <span class="ml-2 text-gray-700">Пунктуальный</span>
+                                </label>
+                            </div>
+                            <div>
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="courierQualities[]" value="helpful" class="text-blue-600 focus:ring-blue-500">
+                                    <span class="ml-2 text-gray-700">Отзывчивый</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Feedback -->
+                <div class="pb-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Дополнительная обратная связь</h3>
+                    
+                    <div class="mb-4">
+                        <label for="improvements" class="block text-sm font-medium text-gray-700 mb-2">Что можно улучшить?</label>
+                        <textarea id="improvements" name="improvements" rows="4" 
+                                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                  placeholder="Поделитесь своими предложениями по улучшению сервиса доставки..."></textarea>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="additionalComments" class="block text-sm font-medium text-gray-700 mb-2">Дополнительные комментарии</label>
+                        <textarea id="additionalComments" name="additionalComments" rows="3" 
+                                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                  placeholder="Любые дополнительные комментарии или пожелания..."></textarea>
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="flex items-center">
+                            <input type="checkbox" name="recommend" value="yes" class="text-blue-600 focus:ring-blue-500">
+                            <span class="ml-2 text-gray-700">Я бы рекомендовал ваш сервис доставки друзьям</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="text-center">
+                    <button type="submit" id="submitBtn" 
+                            class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                        Отправить отзыв
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Success Message -->
+        <div id="successMessage" class="hidden max-w-2xl mx-auto mt-6 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg">
+            <div class="flex items-center">
+                <div class="flex-shrink-0">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg>
+                </div>
+                <div class="ml-3">
+                    <p class="font-medium">Спасибо за ваш отзыв!</p>
+                    <p class="text-sm">Ваше мнение поможет нам улучшить качество доставки.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
 </html>
