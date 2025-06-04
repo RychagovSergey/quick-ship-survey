@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Show loading state
         submitBtn.disabled = true;
-        submitBtn.innerHTML = 'Отправка...';
+        submitBtn.innerHTML = getText('form.submit.sending');
         form.classList.add('loading');
         
         // Prepare form data
@@ -91,17 +91,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 successMessage.classList.remove('hidden');
                 successMessage.scrollIntoView({ behavior: 'smooth' });
             } else {
-                throw new Error(data.message || 'Произошла ошибка при отправке');
+                throw new Error(data.message || getText('error.form.submit.general'));
             }
         })
         .catch(error => {
             console.error('Error:', error);
-            alert('Произошла ошибка при отправке формы. Попробуйте еще раз.');
+            alert(getText('error.form.submit.alert'));
         })
         .finally(() => {
             // Reset loading state
             submitBtn.disabled = false;
-            submitBtn.innerHTML = 'Отправить отзыв';
+            submitBtn.innerHTML = getText('form.submitButton');
             form.classList.remove('loading');
         });
     });
@@ -116,7 +116,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const field = document.getElementById(fieldName);
             if (!field.value.trim()) {
                 isValid = false;
-                errors.push(`Поле "${field.labels[0].textContent}" обязательно для заполнения`);
+                const labelText = field.labels[0] ? field.labels[0].textContent : fieldName;
+                errors.push(getText('validation.fieldRequired').replace('{fieldName}', labelText));
                 field.classList.add('border-red-500');
             } else {
                 field.classList.remove('border-red-500');
@@ -128,32 +129,32 @@ document.addEventListener('DOMContentLoaded', function() {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (email && !emailRegex.test(email)) {
             isValid = false;
-            errors.push('Введите корректный email адрес');
+            errors.push(getText('validation.email.invalid'));
             document.getElementById('email').classList.add('border-red-500');
         }
         
         // Check overall rating
         if (!ratingInput.value) {
             isValid = false;
-            errors.push('Выберите общую оценку качества доставки');
+            errors.push(getText('validation.rating.required'));
         }
         
         // Check delivery speed
         const deliverySpeed = document.querySelector('input[name="deliverySpeed"]:checked');
         if (!deliverySpeed) {
             isValid = false;
-            errors.push('Выберите оценку скорости доставки');
+            errors.push(getText('validation.deliverySpeed.required'));
         }
         
         // Check package condition
         const packageCondition = document.querySelector('input[name="packageCondition"]:checked');
         if (!packageCondition) {
             isValid = false;
-            errors.push('Выберите состояние посылки');
+            errors.push(getText('validation.packageCondition.required'));
         }
         
         if (!isValid) {
-            alert('Пожалуйста, исправьте следующие ошибки:\n\n' + errors.join('\n'));
+            alert(getText('validation.error.title') + '\n\n' + errors.join('\n'));
         }
         
         return isValid;

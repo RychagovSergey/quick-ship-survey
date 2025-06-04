@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Опросник качества доставки</title>
+    <title data-translate="pageTitle"></title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -12,44 +12,44 @@
     <div class="container mx-auto px-4 py-8">
         <!-- Header -->
         <div class="text-center mb-8">
-            <h1 class="text-4xl font-bold text-gray-800 mb-2">Опросник качества доставки</h1>
-            <p class="text-lg text-gray-600">Помогите нам улучшить наш сервис доставки</p>
+            <h1 class="text-4xl font-bold text-gray-800 mb-2" data-translate="header.title"></h1>
+            <p class="text-lg text-gray-600" data-translate="header.subtitle"></p>
         </div>
 
         <!-- Main Form -->
         <div class="max-w-2xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
             <div class="bg-gradient-to-r from-blue-600 to-indigo-600 p-6">
-                <h2 class="text-2xl font-semibold text-white">Ваше мнение важно для нас</h2>
-                <p class="text-blue-100 mt-2">Заполните форму ниже, чтобы оценить качество доставки</p>
+                <h2 class="text-2xl font-semibold text-white" data-translate="form.title"></h2>
+                <p class="text-blue-100 mt-2" data-translate="form.subtitle"></p>
             </div>
 
             <form id="deliveryForm" class="p-6 space-y-6">
                 <!-- Personal Info Section -->
                 <div class="border-b border-gray-200 pb-6">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Личная информация</h3>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4" data-translate="form.personalInfo.title"></h3>
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label for="firstName" class="block text-sm font-medium text-gray-700 mb-2">Имя *</label>
+                            <label for="firstName" class="block text-sm font-medium text-gray-700 mb-2" data-translate="form.personalInfo.firstNameLabel"></label>
                             <input type="text" id="firstName" name="firstName" required 
                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                         </div>
                         
                         <div>
-                            <label for="lastName" class="block text-sm font-medium text-gray-700 mb-2">Фамилия *</label>
+                            <label for="lastName" class="block text-sm font-medium text-gray-700 mb-2" data-translate="form.personalInfo.lastNameLabel"></label>
                             <input type="text" id="lastName" name="lastName" required 
                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                         </div>
                     </div>
 
                     <div class="mt-4">
-                        <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-2" data-translate="form.personalInfo.emailLabel"></label>
                         <input type="email" id="email" name="email" required 
                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                     </div>
 
                     <div class="mt-4">
-                        <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Телефон</label>
+                        <label for="phone" class="block text-sm font-medium text-gray-700 mb-2" data-translate="form.personalInfo.phoneLabel"></label>
                         <input type="tel" id="phone" name="phone" 
                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                     </div>
@@ -57,11 +57,11 @@
 
                 <!-- Delivery Assessment Section -->
                 <div class="border-b border-gray-200 pb-6">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Оценка доставки</h3>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4" data-translate="form.deliveryAssessment.title"></h3>
                     
                     <!-- Overall Rating -->
                     <div class="mb-6">
-                        <label class="block text-sm font-medium text-gray-700 mb-3">Общая оценка качества доставки *</label>
+                        <label class="block text-sm font-medium text-gray-700 mb-3" data-translate="form.deliveryAssessment.overallRatingLabel"></label>
                         <div class="flex space-x-2" id="overallRating">
                             <button type="button" class="star-btn text-3xl text-gray-300 hover:text-yellow-400 transition-colors duration-200" data-rating="1">★</button>
                             <button type="button" class="star-btn text-3xl text-gray-300 hover:text-yellow-400 transition-colors duration-200" data-rating="2">★</button>
@@ -70,81 +70,81 @@
                             <button type="button" class="star-btn text-3xl text-gray-300 hover:text-yellow-400 transition-colors duration-200" data-rating="5">★</button>
                         </div>
                         <input type="hidden" id="overallRatingValue" name="overallRating" required>
-                        <p class="text-sm text-gray-500 mt-1">Нажмите на звездочки для оценки (1 - очень плохо, 5 - отлично)</p>
+                        <p class="text-sm text-gray-500 mt-1" data-translate="form.deliveryAssessment.overallRatingHint"></p>
                     </div>
 
                     <!-- Delivery Speed -->
                     <div class="mb-6">
-                        <label class="block text-sm font-medium text-gray-700 mb-3">Скорость доставки *</label>
+                        <label class="block text-sm font-medium text-gray-700 mb-3" data-translate="form.deliveryAssessment.deliverySpeedLabel"></label>
                         <div class="space-y-2">
                             <label class="flex items-center">
                                 <input type="radio" name="deliverySpeed" value="very-fast" class="text-blue-600 focus:ring-blue-500">
-                                <span class="ml-2 text-gray-700">Очень быстро (раньше срока)</span>
+                                <span class="ml-2 text-gray-700" data-translate="form.deliveryAssessment.deliverySpeed.veryFast"></span>
                             </label>
                             <label class="flex items-center">
                                 <input type="radio" name="deliverySpeed" value="on-time" class="text-blue-600 focus:ring-blue-500">
-                                <span class="ml-2 text-gray-700">Вовремя</span>
+                                <span class="ml-2 text-gray-700" data-translate="form.deliveryAssessment.deliverySpeed.onTime"></span>
                             </label>
                             <label class="flex items-center">
                                 <input type="radio" name="deliverySpeed" value="slightly-late" class="text-blue-600 focus:ring-blue-500">
-                                <span class="ml-2 text-gray-700">Немного с опозданием</span>
+                                <span class="ml-2 text-gray-700" data-translate="form.deliveryAssessment.deliverySpeed.slightlyLate"></span>
                             </label>
                             <label class="flex items-center">
                                 <input type="radio" name="deliverySpeed" value="very-late" class="text-blue-600 focus:ring-blue-500">
-                                <span class="ml-2 text-gray-700">Очень поздно</span>
+                                <span class="ml-2 text-gray-700" data-translate="form.deliveryAssessment.deliverySpeed.veryLate"></span>
                             </label>
                         </div>
                     </div>
 
                     <!-- Package Condition -->
                     <div class="mb-6">
-                        <label class="block text-sm font-medium text-gray-700 mb-3">Состояние посылки *</label>
+                        <label class="block text-sm font-medium text-gray-700 mb-3" data-translate="form.deliveryAssessment.packageConditionLabel"></label>
                         <div class="space-y-2">
                             <label class="flex items-center">
                                 <input type="radio" name="packageCondition" value="perfect" class="text-blue-600 focus:ring-blue-500">
-                                <span class="ml-2 text-gray-700">Идеальное состояние</span>
+                                <span class="ml-2 text-gray-700" data-translate="form.deliveryAssessment.packageCondition.perfect"></span>
                             </label>
                             <label class="flex items-center">
                                 <input type="radio" name="packageCondition" value="good" class="text-blue-600 focus:ring-blue-500">
-                                <span class="ml-2 text-gray-700">Хорошее состояние</span>
+                                <span class="ml-2 text-gray-700" data-translate="form.deliveryAssessment.packageCondition.good"></span>
                             </label>
                             <label class="flex items-center">
                                 <input type="radio" name="packageCondition" value="damaged" class="text-blue-600 focus:ring-blue-500">
-                                <span class="ml-2 text-gray-700">Повреждена упаковка</span>
+                                <span class="ml-2 text-gray-700" data-translate="form.deliveryAssessment.packageCondition.damaged"></span>
                             </label>
                             <label class="flex items-center">
                                 <input type="radio" name="packageCondition" value="severely-damaged" class="text-blue-600 focus:ring-blue-500">
-                                <span class="ml-2 text-gray-700">Сильно повреждена</span>
+                                <span class="ml-2 text-gray-700" data-translate="form.deliveryAssessment.packageCondition.severelyDamaged"></span>
                             </label>
                         </div>
                     </div>
 
                     <!-- Courier Service -->
                     <div class="mb-6">
-                        <label class="block text-sm font-medium text-gray-700 mb-3">Оценка работы курьера</label>
+                        <label class="block text-sm font-medium text-gray-700 mb-3" data-translate="form.deliveryAssessment.courierServiceLabel"></label>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
                                 <label class="flex items-center">
                                     <input type="checkbox" name="courierQualities[]" value="polite" class="text-blue-600 focus:ring-blue-500">
-                                    <span class="ml-2 text-gray-700">Вежливый</span>
+                                    <span class="ml-2 text-gray-700" data-translate="form.deliveryAssessment.courierService.polite"></span>
                                 </label>
                             </div>
                             <div>
                                 <label class="flex items-center">
                                     <input type="checkbox" name="courierQualities[]" value="professional" class="text-blue-600 focus:ring-blue-500">
-                                    <span class="ml-2 text-gray-700">Профессиональный</span>
+                                    <span class="ml-2 text-gray-700" data-translate="form.deliveryAssessment.courierService.professional"></span>
                                 </label>
                             </div>
                             <div>
                                 <label class="flex items-center">
                                     <input type="checkbox" name="courierQualities[]" value="punctual" class="text-blue-600 focus:ring-blue-500">
-                                    <span class="ml-2 text-gray-700">Пунктуальный</span>
+                                    <span class="ml-2 text-gray-700" data-translate="form.deliveryAssessment.courierService.punctual"></span>
                                 </label>
                             </div>
                             <div>
                                 <label class="flex items-center">
                                     <input type="checkbox" name="courierQualities[]" value="helpful" class="text-blue-600 focus:ring-blue-500">
-                                    <span class="ml-2 text-gray-700">Отзывчивый</span>
+                                    <span class="ml-2 text-gray-700" data-translate="form.deliveryAssessment.courierService.helpful"></span>
                                 </label>
                             </div>
                         </div>
@@ -153,26 +153,26 @@
 
                 <!-- Additional Feedback -->
                 <div class="pb-6">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Дополнительная обратная связь</h3>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4" data-translate="form.additionalFeedback.title"></h3>
                     
                     <div class="mb-4">
-                        <label for="improvements" class="block text-sm font-medium text-gray-700 mb-2">Что можно улучшить?</label>
+                        <label for="improvements" class="block text-sm font-medium text-gray-700 mb-2" data-translate="form.additionalFeedback.improvementsLabel"></label>
                         <textarea id="improvements" name="improvements" rows="4" 
                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                                  placeholder="Поделитесь своими предложениями по улучшению сервиса доставки..."></textarea>
+                                  placeholder="" data-translate-placeholder="form.additionalFeedback.improvementsPlaceholder"></textarea>
                     </div>
 
                     <div class="mb-4">
-                        <label for="additionalComments" class="block text-sm font-medium text-gray-700 mb-2">Дополнительные комментарии</label>
+                        <label for="additionalComments" class="block text-sm font-medium text-gray-700 mb-2" data-translate="form.additionalFeedback.additionalCommentsLabel"></label>
                         <textarea id="additionalComments" name="additionalComments" rows="3" 
                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                                  placeholder="Любые дополнительные комментарии или пожелания..."></textarea>
+                                  placeholder="" data-translate-placeholder="form.additionalFeedback.additionalCommentsPlaceholder"></textarea>
                     </div>
 
                     <div class="mb-6">
                         <label class="flex items-center">
                             <input type="checkbox" name="recommend" value="yes" class="text-blue-600 focus:ring-blue-500">
-                            <span class="ml-2 text-gray-700">Я бы рекомендовал ваш сервис доставки друзьям</span>
+                            <span class="ml-2 text-gray-700" data-translate="form.additionalFeedback.recommendCheckbox"></span>
                         </label>
                     </div>
                 </div>
@@ -180,8 +180,8 @@
                 <!-- Submit Button -->
                 <div class="text-center">
                     <button type="submit" id="submitBtn" 
-                            class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-                        Отправить отзыв
+                            class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                            data-translate="form.submitButton">
                     </button>
                 </div>
             </form>
@@ -196,8 +196,8 @@
                     </svg>
                 </div>
                 <div class="ml-3">
-                    <p class="font-medium">Спасибо за ваш отзыв!</p>
-                    <p class="text-sm">Ваше мнение поможет нам улучшить качество доставки.</p>
+                    <p class="font-medium" data-translate="successMessage.title"></p>
+                    <p class="text-sm" data-translate="successMessage.subtitle"></p>
                 </div>
             </div>
         </div>
@@ -205,7 +205,7 @@
 
 
         <div class="text-center text-xs text-gray-600 mb-6">
-            <p>Нажимая на кнопку "Отправить отзыв", вы соглашаетесь на обработку ваших персональных данных в соответсвии с <a href="https://www.postimees.ee/privacy-policy/" target="_blank" rel="noopener noreferrer" class="underline">политикой конфиденциальности</a>.</p>
+            <p data-translate="footer.consentText" data-translate-dynamic="true">Нажимая на кнопку "Отправить отзыв", вы соглашаетесь на обработку ваших персональных данных в соответсвии с <a href="https://www.postimees.ee/privacy-policy/" target="_blank" rel="noopener noreferrer" class="underline">политикой конфиденциальности</a>.</p>
         </div>
 
 <script>
@@ -220,7 +220,7 @@
                 if (!field.nextElementSibling || !field.nextElementSibling.classList.contains('error-message')) {
                     const errorMessage = document.createElement('p');
                     errorMessage.className = 'error-message text-red-500 text-sm mt-1';
-                    errorMessage.textContent = 'Это поле обязательно для заполнения.';
+                    errorMessage.textContent = getText('form.validation.requiredError'); // Use getText directly
                     field.parentNode.insertBefore(errorMessage, field.nextSibling);
                 }
             } else {
@@ -239,6 +239,7 @@
 
 
 </script>
+    <script src="localization.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
