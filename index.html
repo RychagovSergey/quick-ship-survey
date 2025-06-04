@@ -203,6 +203,39 @@
         </div>
     </div>
 
+
+        <div class="text-center text-xs text-gray-600 mb-6">
+            <p>Нажимая на кнопку "Отправить отзыв", вы соглашаетесь на обработку ваших персональных данных в соответсвии с <a href="https://www.postimees.ee/privacy-policy/" target="_blank" rel="noopener noreferrer" class="underline">политикой конфиденциальности</a>.</p>
+        </div>
+
+<script>
+    document.getElementById('submitBtn').addEventListener('click', function(event) {
+        const requiredFields = document.querySelectorAll('input[required], textarea[required]');
+        let allFieldsValid = true;
+
+        requiredFields.forEach(field => {
+            if (!field.value) {
+                allFieldsValid = false;
+                field.classList.add('border-red-500');
+                if (!field.nextElementSibling || !field.nextElementSibling.classList.contains('error-message')) {
+                    const errorMessage = document.createElement('p');
+                    errorMessage.className = 'error-message text-red-500 text-sm mt-1';
+                    errorMessage.textContent = 'Это поле обязательно для заполнения.';
+                    field.parentNode.insertBefore(errorMessage, field.nextSibling);
+                }
+            } else {
+                field.classList.remove('border-red-500');
+                if (field.nextElementSibling && field.nextElementSibling.classList.contains('error-message')) {
+                    field.nextElementSibling.remove();
+                }
+            }
+        });
+
+        if (!allFieldsValid) {
+            event.preventDefault();
+        }
+    });
+</script>
     <script src="script.js"></script>
 </body>
 </html>
